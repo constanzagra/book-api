@@ -1,6 +1,6 @@
 const responseFormatter = (data) =>{
     if(!data){
-        return JSON.stringify({eror: "No se ha encontrado la información"})
+        return JSON.stringify({error: "No se ha encontrado la información"})
     } return JSON.stringify(data, null, 2)
 };
 

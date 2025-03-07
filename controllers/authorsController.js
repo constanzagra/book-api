@@ -4,23 +4,19 @@ const responseView = require('../views/responseFormatter');
 const authorsController = {
     getAuthors: () => {
         const authors = authorModel.readAuthors();
-    
-        return responseView.responseFormatter(authors)
+        return responseView.responseFormatter(authors);
     },
     
     addAuthor: (newAuthor) => {
-        const authors = authorModel.readAuthors();
-    
-        authors.push(newAuthor);
-    
-        authorModel.addAuthor(newAuthor)
-    
-        return responseView.responseFormatter('Autor/a agregado exitosamente', newAuthor)
+        authorModel.addAuthor(newAuthor);
+        // return responseView.responseFormatter('Autor/a agregado exitosamente', newAuthor)
+        return responseView.responseFormatter('Autor/a agregado exitosamente');
     },
 
     searchAuthor: (data) => {
-        const authors = authorModel.readAuthors();
-
-        const results = authorModel.searchAuthor(data)
+        const results = authorModel.searchAuthor(data);
+        return results;
     }
 };
+
+module.exports = { authorsController };
