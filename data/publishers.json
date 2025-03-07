@@ -1,0 +1,12 @@
+[
+    {
+        "id" : 1,
+        "nombre" : "planeta",
+        "ubicacion" : "argentina"
+    },
+    {
+        "id" : 2,
+        "nombre" : "sudamericana",
+        "ubicacion" : "sudamerica"
+    }
+]
