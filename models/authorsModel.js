@@ -26,10 +26,11 @@ const addAuthor = (author) => {
 
 const searchAuthor = (query) => {
     const authors = readAuthors();
-    return authors.filter(author => 
-        author.nombre.toLowerCase().includes(query.toLowerCase()) || 
-        author.nacionalidad.toLowerCase().includes(query.toLowerCase())
+    const result = authors.find(author => 
+        author.nombre.toLowerCase() === query.toLowerCase() || 
+        author.nacionalidad.toLowerCase() === query.toLowerCase()
     );
+    return JSON.stringify(result);
 }
 
 module.exports = {readAuthors, addAuthor, searchAuthor}

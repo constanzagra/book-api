@@ -28,7 +28,7 @@ const server = net.createServer((socket) => {
         console.log(`Mensaje recibido: ${commandAndData}`);
         let response = '';
 
-        response = authorsController.addAuthor('Fiorella Rodriguez');
+        response = authorsController.getAuthors();
         socket.write(response);
     })
 
