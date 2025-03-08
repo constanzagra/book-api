@@ -19,4 +19,4 @@ const booksController = {
     }
 }
 
-module.exports = booksController;
+module.exports = {booksController};

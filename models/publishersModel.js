@@ -1,8 +1,3 @@
-// Implementa en los modelos la lógica para leer y
-// escribir datos desde y hacia estos archivos
-// usando el módulo FS.
-//1. Listar editoriales
-//2. Agregar nuevas editoriales
 const fs = require('fs');
 const path = require('path');
 

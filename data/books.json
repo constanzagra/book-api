@@ -1,26 +1,5 @@
-[
-    {
-        "id" : 1,
-        "titulo": "Un lugar soleado para gente sombria",
-        "autor": 1,
-        "editorial" : "Anagrama"
-    },
-    {
-        "id" : 2,
-        "titulo": "Noah",
-        "autor": " Sebastin Fitzek",
-        "editorial" : "Planeta"
-    },
-    {
-        "id" : 3,
-        "titulo" : "El estado y la revolución",
-        "autor" : "Vladimir Lenin",
-        "editorial" : "ediciones ips"
-    },
-    {
-        "id" : 4,
-        "titulo": "Los peligros de fumar en la cama",
-        "autor" : "Mariana Enriquez",
-        "editorial" : "Pengüins"
-    }
-]
+{
+  "id": "d346ff40-1cb1-4ca6-9ca9-6a98eda52a58",
+  "nombre": "Los peligros de fumar en la cama",
+  "author": 1
+}
