@@ -16,7 +16,7 @@ const addPublisher = ({publisherName, location}) => {
 
     publishers.push(newPublisher);
     fs.writeFileSync(dataPath, JSON.stringify(publishers, null, 2))
-    return newPublisher
+    return newPublisher;
 }; 
 
 const searchPublisher = (query) => {
