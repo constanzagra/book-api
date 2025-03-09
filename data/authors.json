@@ -1,4 +1,5 @@
-[  {
+[
+  {
     "id": 1,
     "nombre": "Mariana Enriquez",
     "nacionalidad": "argentina"
@@ -12,5 +13,15 @@
     "id": "ed15683d-d8a3-4b59-af85-19ababf7885d",
     "nombre": "Fiorella Rodriguez",
     "nacionalidad": "Fiorella Rodriguez"
+  },
+  {
+    "id": "6a151df9-b170-49d6-bb11-9d539a0024d6",
+    "nombre": "Cortazar",
+    "nacionalidad": "argentino"
+  },
+  {
+    "id": "3d1e4361-6f18-4a4e-ab3d-05967def428d",
+    "nombre": "Isabel Allende",
+    "nacionalidad": "chilena"
   }
 ]

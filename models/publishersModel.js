@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { v4 : uuidv4 } = require('uuid');
 
-const dataPath = path.join(__dirname, '../data/publisher.json');
+const dataPath = path.join(__dirname, '../data/publishers.json');
 
 const readPublishers = () => {
         const data = fs.readFileSync(dataPath, 'utf-8')
@@ -9,14 +10,21 @@ const readPublishers = () => {
 };
 
 
-const addPublisher = (publisher) => {
-    fs.writeFileSync(dataPath, JSON.stringify(publisher, null, 2))
-};
+const addPublisher = ({publisherName, location}) => { 
+    const publishers = readPublishers();
+    const newPublisher = { id: uuidv4(), nombre: publisherName, ubicacion: location}; 
 
-const searchPublisher = (publisher) => {
+    publishers.push(newPublisher);
+    fs.writeFileSync(dataPath, JSON.stringify(publishers, null, 2))
+    return newPublisher
+}; 
+
+const searchPublisher = (query) => {
     const data = readPublishers();
-    return data.filter(publisher => publisher.nombre === publisher || publisher.pais === publisher)
+    return data.filter(publisher => 
+        publisher.nombre.toLowerCase().trim() === query.toLowerCase().trim() 
+        || publisher.pais.toLowerCase().trim() === query.toLowerCase().trim())
 };
 
 
-module.exports = {readPublishers, addPublisher, searchPublisher}
+module.exports = { readPublishers, addPublisher, searchPublisher }  

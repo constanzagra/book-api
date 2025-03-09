@@ -11,7 +11,7 @@
 const net = require('net');
 const client = new net.Socket();
 
-client.connect(8080, 'localhost', () => {
+client.connect(8085, 'localhost', () => {
     console.log('Conectado al servidor');
     
     // Enviar comandos al servidor
