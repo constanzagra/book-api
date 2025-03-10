@@ -20,11 +20,7 @@
 const net = require('net');
 const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController');
-<<<<<<< HEAD
-const {publishersController} = require('./controllers/publishersController')
-=======
 const {publishersController} = require('./controllers/publishersController');
->>>>>>> 3311c6a1e3e62588ab1e80775a7349b3cc2e788e
 
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
