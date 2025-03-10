@@ -30,22 +30,8 @@ const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
     socket.on('data', (data) => {
-<<<<<<< HEAD
         const message = data.toString().trim();
         const [command, ...args] = message.split(' ');
-=======
-        const commandAndData = data.toString().trim();
-        console.log(`Mensaje recibido: ${commandAndData}`);
-        let response = '';
-        
-        //response = authorsController.getAuthors();
-        //response = booksController.getBooks();
-        response = authorsController.addAuthor({author: "Virginia Woolf", nationality: "inglesa"})
-        //response = publishersController.addPublisher({publisherName: "Sudamericana", location: "Sudamerica"});
-        //response = publishersController("")
-        socket.write(response);
-    })
->>>>>>> 3311c6a1e3e62588ab1e80775a7349b3cc2e788e
 
         switch (command) {
             case 'GET':
@@ -88,15 +74,7 @@ const server = net.createServer((socket) => {
     });
 });
 
-<<<<<<< HEAD
-server.listen(8080, () => {
-=======
-    socket.on('error', (error) => {
-        console.error(error);
-    })
-})
 
 server.listen(8085, () => {
->>>>>>> 3311c6a1e3e62588ab1e80775a7349b3cc2e788e
     console.log('Servidor TCP escuchando en el puerto 8080');
 });
