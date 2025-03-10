@@ -1,16 +1,25 @@
 const net = require('net');
 const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController');
+<<<<<<< HEAD
 const {publishersController} = require('./controllers/publishersController')
+=======
+const {publishersController} = require('./controllers/publishersController');
+>>>>>>> 92433caea756b3fc4e8b1bd80712084a0bc24f57
 
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
     socket.on('data', (data) => {
+<<<<<<< HEAD
 
         const message = data.toString().trim();
         const [command, ...args] = message.split(' ');
 
+=======
+        const message = data.toString().trim();
+        const [command, ...args] = message.split(' ');
+>>>>>>> 92433caea756b3fc4e8b1bd80712084a0bc24f57
 
         switch (command) {
             case 'GET':
@@ -54,6 +63,7 @@ const server = net.createServer((socket) => {
         }
     });
 
+<<<<<<< HEAD
     socket.on('error', (error) => {
         console.error(error);
     })
@@ -62,5 +72,9 @@ const server = net.createServer((socket) => {
     
 
 server.listen(8080, () => {
+=======
+
+server.listen(8085, () => {
+>>>>>>> 92433caea756b3fc4e8b1bd80712084a0bc24f57
     console.log('Servidor TCP escuchando en el puerto 8080');
 });
