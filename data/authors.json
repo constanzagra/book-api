@@ -1,11 +1,11 @@
 [
   {
-    "id": 1,
+    "id": "c39b76a3-6011-47b7-88a7-b10d30c01fba",
     "nombre": "Mariana Enriquez",
     "nacionalidad": "argentina"
   },
   {
-    "id": 2,
+    "id": "dc7245ed-f89f-45b7-a44c-036cd89416f7",
     "nombre": "Vladimir Lenin",
     "nacionalidad": "rusa"
   },
@@ -23,5 +23,8 @@
     "id": "3d1e4361-6f18-4a4e-ab3d-05967def428d",
     "nombre": "Isabel Allende",
     "nacionalidad": "chilena"
+  },
+  {
+    "id": "87e572fe-e3e2-42dd-91ed-087361f95f50"
   }
 ]

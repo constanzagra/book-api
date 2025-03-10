@@ -38,7 +38,7 @@ const client = net.createConnection({ host: HOST, port: PORT }, () => {
  });
 
  function promptUser() {
-    rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR, GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
+    rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR (nombre, nacionalidad), GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
         client.write(input.trim()); 
     });
   }
