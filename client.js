@@ -9,21 +9,36 @@
 // comandos y recibir respuestas correctamente
 // desde el servidor.
 const net = require('net');
-const client = new net.Socket();
+const readline = require('readline');
+const { question } = require('readline-sync');
+const { authorsController } = require('./controllers/authorsController');
 
-client.connect(8080, 'localhost', () => {
+const HOST = 'localhost';
+const PORT = 8080;
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+const client = net.createConnection({ host: HOST, port: PORT }, () => {
     console.log('Conectado al servidor');
-    
-    // Enviar comandos al servidor
-    client.write('Hola');
-    // client.write('GET AUTHORS');
-    // client.write('FIND AUTHOR Borges');
+    promptUser();
 });
 
 client.on('data', (data) => {
-    console.log('Respuesta del servidor:\n', data.toString());
+    console.log('Respuesta del servidor:', data.toString().trim());
+    promptUser();
+});s
+
+function promptUser() {
+    rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR, GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
+        client.write(input.trim()); 
+    });
+}
+
+client.on('end', () => {
+    console.log('Desconectado del servidor');
+    process.exit();
 });
 
-client.on('close', () => {
-    console.log('Conexión cerrada');
-});
