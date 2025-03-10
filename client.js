@@ -10,8 +10,9 @@
 // desde el servidor.
 const net = require('net');
 const readline = require('readline');
-const { question } = require('readline-sync');
-const { authorsController } = require('./controllers/authorsController');
+const {question} = require('readline-sync')
+const {authorsController} = require('./controllers/authorsController');
+const {booksController} = require('./controllers/booksController')
 
 const HOST = 'localhost';
 const PORT = 8080;
@@ -29,13 +30,17 @@ const client = net.createConnection({ host: HOST, port: PORT }, () => {
 client.on('data', (data) => {
     console.log('Respuesta del servidor:', data.toString().trim());
     promptUser();
-});s
+});
 
 function promptUser() {
     rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR, GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
         client.write(input.trim()); 
     });
 }
+
+client.on('error', (error) => {
+    console.error(error);
+})
 
 client.on('end', () => {
     console.log('Desconectado del servidor');
