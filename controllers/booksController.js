@@ -15,8 +15,8 @@ const booksController = {
 
         bookModel.addBook(newBook)
 
-        return responseView.responseFormatter('Libro agregado exitosamente', newBook)
+        return responseView.responseFormatter('Libro agregado exitosamente: ', newBook)
     }
 }
 
-module.exports = {booksController};
+module.exports = { booksController }; 

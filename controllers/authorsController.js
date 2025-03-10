@@ -9,8 +9,7 @@ const authorsController = {
     
     addAuthor: (newAuthor) => {
         authorModel.addAuthor(newAuthor);
-        // return responseView.responseFormatter('Autor/a agregado exitosamente', newAuthor)
-        return responseView.responseFormatter('Autor/a agregado exitosamente');
+        return responseView.responseFormatter('Autor/a agregado exitosamente', newAuthor);
     },
 
     searchAuthor: (data) => {

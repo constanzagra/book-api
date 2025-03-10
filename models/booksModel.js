@@ -23,7 +23,7 @@ const addBook = ({titulo, autor}) => {
     const newBook = { id: uuidv4(), nombre: titulo, author: idAuthor.id};
 
     data.push(newBook);
-    fs.writeFileSync(booksPath, JSON.stringify(newBook, null, 2)) 
+    fs.writeFileSync(booksPath, JSON.stringify(data, null, 2)) 
     return newBook
 }; 
 
