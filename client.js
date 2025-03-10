@@ -13,6 +13,7 @@ const readline = require('readline');
 const {question} = require('readline-sync')
 const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController')
+const {publishersController} = require('./controllers/publishersController')
 
 
 const HOST = 'localhost';
@@ -25,26 +26,29 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
 
-client.connect(8085, 'localhost', () => {
+ client.connect(8080, 'localhost', () => {
 
     console.log('Conectado al servidor');
     promptUser();
-});
+ });
 
-client.on('data', (data) => {
+ client.on('data', (data) => {
     console.log('Respuesta del servidor:', data.toString().trim());
     promptUser();
-});
+ });
 
-function promptUser() {
+ function promptUser() {
     rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR, GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
         client.write(input.trim()); 
     });
-}
+  }
 
-client.on('error', (error) => {
+  client.on('error', (error) => {
     console.error(error);
 })
+});
+
+
 
 client.on('end', () => {
     console.log('Desconectado del servidor');

@@ -1,51 +1,16 @@
-// Configura el servidor para escuchar conexiones
-// en el puerto 8080 y para recibir comandos de
-// los clientes.
-
-// Asegúrate de manejar correctamente múltiples
-// conexiones y de devolver respuestas claras a los
-// clientes.
-
-// ▪ Implementa el manejo de errores para asegurar
-// que el servidor responda de manera adecuada a
-// diferentes situaciones.
-
-// Asegúrate de que estas funciones sean
-// accesibles desde el servidor TCP mediante
-// comandos como 
-// GET AUTHORS, 
-// ADD AUTHOR {}, 
-// GET PUBLISHERS, 
-// ADD PUBLISHER {}, etc.
 const net = require('net');
 const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController');
-<<<<<<< HEAD
 const {publishersController} = require('./controllers/publishersController')
-=======
-const {publishersController} = require('./controllers/publishersController');
->>>>>>> 3311c6a1e3e62588ab1e80775a7349b3cc2e788e
 
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
     socket.on('data', (data) => {
-<<<<<<< HEAD
+
         const message = data.toString().trim();
         const [command, ...args] = message.split(' ');
-=======
-        const commandAndData = data.toString().trim();
-        console.log(`Mensaje recibido: ${commandAndData}`);
-        let response = '';
-        
-        //response = authorsController.getAuthors();
-        //response = booksController.getBooks();
-        response = authorsController.addAuthor({author: "Virginia Woolf", nationality: "inglesa"})
-        //response = publishersController.addPublisher({publisherName: "Sudamericana", location: "Sudamerica"});
-        //response = publishersController("")
-        socket.write(response);
-    })
->>>>>>> 3311c6a1e3e62588ab1e80775a7349b3cc2e788e
+
 
         switch (command) {
             case 'GET':
@@ -53,15 +18,17 @@ const server = net.createServer((socket) => {
                     const authors = JSON.parse(authorsController.getAuthors());
                     socket.write(`Autores: ${JSON.stringify(authors, null, 2)}`);
                     //GET AUTHORS FUNCIONA
-                    //El resto lo voy a ir solucionando tenganme paciencia
                 } 
                 else if (args[0] === 'PUBLISHERS') {
-                    const publishers = publishersController.getPubl();
-                    socket.write(`Editoriales: ${JSON.stringify(publishers)}\n`);
+                    const publishers = JSON.parse(publishersController.getPublishers());
+                    socket.write(`Editoriales: ${JSON.stringify(publishers, null, 2)}\n`);
+                    //GET PUBLISHERS FUNCIONA
 
                 } else if (args[0] === 'BOOKS') {
-                    const book = booksController.getBooks();
-                    socket.write(`Libros: ${JSON.stringify(book)}\n`);
+                    const book = JSON.parse(booksController.getBooks());
+                    socket.write(`Libros: ${JSON.stringify(book, null ,2)}\n`);
+                    //GET BOOKS FUNCIONA
+
                 } else {
                     socket.write('Comando no reconocido\n');
                 }
@@ -86,17 +53,14 @@ const server = net.createServer((socket) => {
                 break;
         }
     });
-});
 
-<<<<<<< HEAD
-server.listen(8080, () => {
-=======
     socket.on('error', (error) => {
         console.error(error);
     })
-})
+});
 
-server.listen(8085, () => {
->>>>>>> 3311c6a1e3e62588ab1e80775a7349b3cc2e788e
+    
+
+server.listen(8080, () => {
     console.log('Servidor TCP escuchando en el puerto 8080');
 });
