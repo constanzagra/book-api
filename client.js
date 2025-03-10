@@ -13,6 +13,7 @@ const readline = require('readline');
 const { question } = require('readline-sync');
 const { authorsController } = require('./controllers/authorsController');
 
+
 const HOST = 'localhost';
 const PORT = 8080;
 
@@ -22,6 +23,9 @@ const rl = readline.createInterface({
 });
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
+
+client.connect(8085, 'localhost', () => {
+
     console.log('Conectado al servidor');
     promptUser();
 });

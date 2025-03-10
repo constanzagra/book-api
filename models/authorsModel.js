@@ -16,9 +16,9 @@ const readAuthors = () => {
     return JSON.parse(data)
 };
 
-const addAuthor = (author) => {
+const addAuthor = ({author, nationality}) => {
     const authors = readAuthors();
-    const newAuthor = { id: uuidv4(), nombre: author, nacionalidad: author };
+    const newAuthor = { id: uuidv4(), nombre: author, nacionalidad: nationality };
     authors.push(newAuthor);
     fs.writeFileSync(dataPath, JSON.stringify(authors, null, 2))
     return newAuthor;

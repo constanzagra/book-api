@@ -20,6 +20,7 @@
 const net = require('net');
 const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController');
+const {publishersController} = require('./controllers/publishersController');
 
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
@@ -30,8 +31,10 @@ const server = net.createServer((socket) => {
         let response = '';
         
         //response = authorsController.getAuthors();
-        //booksController.addBook({titulo: "Los peligros de fumar en la cama", autor: "Mariana Enriquez"});
         //response = booksController.getBooks();
+        response = authorsController.addAuthor({author: "Virginia Woolf", nationality: "inglesa"})
+        //response = publishersController.addPublisher({publisherName: "Sudamericana", location: "Sudamerica"});
+        //response = publishersController("")
         socket.write(response);
     })
 
@@ -44,6 +47,6 @@ const server = net.createServer((socket) => {
     })
 })
 
-server.listen(5050, () => {
+server.listen(8085, () => {
     console.log('Servidor TCP escuchando en el puerto 8080');
 });

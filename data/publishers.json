@@ -1,12 +1,5 @@
-[
-    {
-        "id" : 1,
-        "nombre" : "planeta",
-        "ubicacion" : "argentina"
-    },
-    {
-        "id" : 2,
-        "nombre" : "sudamericana",
-        "ubicacion" : "sudamerica"
-    }
-]
+{
+  "id": "ab13a1ef-30a4-4d37-ab3f-52e3a2c2135e",
+  "nombre": "Sudamericana",
+  "ubicacion": "Sudamerica"
+}
