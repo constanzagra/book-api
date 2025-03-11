@@ -7,7 +7,7 @@ const {publishersController} = require('./controllers/publishersController')
 
 
 const HOST = 'localhost';
-const PORT = 8080;
+const PORT = 8081;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -16,7 +16,7 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
 
-client.connect(8080, 'localhost', () => {
+client.connect(8081, 'localhost', () => {
 
     console.log('Conectado al servidor');
     promptUser();
@@ -41,16 +41,23 @@ function promptUser() {
     console.log("*******************************");
 
     rl.question('Ingrese un comando: ', (input) => {
-        client.write(input.trim().toUpperCase()); 
+        input = input.toUpperCase().trim()
+        if(input === "ADD BOOK"){
+            rl.question("Ingrese el titulo del libro: ", (bookTitle) => {
+                rl.question("Ingrese el autor: ", (bookAuthor) => {
+                    const addBookInput = `ADD BOOK + ${bookTitle} + ${bookAuthor}` 
+                    client.write(addBookInput)
+                })
+            })}
+        client.write(input); 
     });
 }
 
 client.on('error', (error) => {
     console.error(error);
-})
 });
 
 client.on('end', () => {
     console.log('Desconectado del servidor');
     process.exit();
-});
+});})

@@ -17,11 +17,13 @@ const addBook = ({titulo, autor}) => {
     const idAuthor = authors.find(author =>
         author.nombre.toLowerCase().trim() === autor.toLowerCase().trim());
     
-    if(!idAuthor){
-        console.log('No existe un perfil para ese autor. \n Registra al nuevo autor antes de ingresar su libro');
-        addAuthor();        
-    }
-    const newBook = { id: uuidv4(), nombre: titulo, author: idAuthor.id};
+    // if(!idAuthor){
+    //     console.log('No existe un perfil para ese autor. \n Registra al nuevo autor antes de ingresar su libro');
+    //     addAuthor();        
+    // }
+    console.log(titulo);
+        
+    const newBook = { id: uuidv4(), nombre: titulo, author: autor};
 
     data.push(newBook);
     fs.writeFileSync(booksPath, JSON.stringify(data, null, 2)) 

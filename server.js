@@ -39,20 +39,20 @@ const server = net.createServer((socket) => {
                     const origin = args.slice(args.length - 1).join(' ');
                     const name = args.slice(1, args.length - 1).join(' ');
                     const newAuthor = authorsController.addAuthor({author: name, nationality: origin});
-                    socket.write(`Autor agregado: ${newAuthor}\n`);
+                    socket.write(`Autor agregado: ${newAuthor}`);
                         //ADD AUTHOR FUNCIONA
                 } else if (args[0] === 'PUBLISHER') {
                     const name = args.slice(1, args.length -1).join(' ');
-                    const located = args.slice(args.length - 1).join('');
+                    const located = args.slice(args.length - 1).join(' ');
                     const newPublisher = publishersController.addPublisher({publisherName: name, location: located});
                     socket.write(`Editorial agregada: ${newPublisher}`); 
                         //ADD PUBLISHER FUNCIONA
                 } else if (args[0] === 'BOOK') {
-                    const name = args.slice(1, args.length -3).join(' ');
-                    const author = args.slice(args.length -2, args.length - 1).join('');
+                    const data = message.split("+")
+                    const name = data.slice(1, data.length -1).join(' ');
+                    const author = data.slice(2).join(' ');
                     const newBook = booksController.addBook({titulo: name, autor: author});
-                    socket.write(`Libro Agregado: ${newBook}`); 
-
+                    socket.write(`Libro Agregado: ${newBook}`);                     
                 }else {
                     socket.write('Comando no reconocido\n');
                 }
@@ -76,6 +76,6 @@ const server = net.createServer((socket) => {
     })
 });
 
-server.listen(8080, () => {
+server.listen(8081, () => {
     console.log('Servidor TCP escuchando en el puerto 8080');
 }); 
