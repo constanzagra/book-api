@@ -1,5 +1,11 @@
-{
-  "id": "ab13a1ef-30a4-4d37-ab3f-52e3a2c2135e",
-  "nombre": "Sudamericana",
-  "ubicacion": "Sudamerica"
-}
+[
+  {
+    "id": "46a249b9-30af-4b4b-9d93-4c3eb861cacd",
+    "nombre": "PENGUIN RANDOM"
+  },
+  {
+    "id": "e5fc5abd-7927-464a-be79-274d8f4715e2",
+    "nombre": "EDITORIAL INDEPENDIENTE",
+    "ubicacion": "CHILE"
+  }
+]

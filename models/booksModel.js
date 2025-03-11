@@ -1,9 +1,6 @@
-// Implementa en los modelos la lógica para leer y
-// escribir datos desde y hacia estos archivos
-// usando el módulo FS.
 const fs = require('fs');
 const path = require('path');
-const {readAuthors} = require('./authorsModel');
+const {readAuthors, addAuthor} = require('./authorsModel');
 const { v4 : uuidv4 } = require('uuid');
 
 const booksPath = path.join(__dirname, '../data/books.json');
@@ -19,7 +16,11 @@ const addBook = ({titulo, autor}) => {
 
     const idAuthor = authors.find(author =>
         author.nombre.toLowerCase().trim() === autor.toLowerCase().trim());
-
+    
+    if(!idAuthor){
+        console.log('No existe un perfil para ese autor. \n Registra al nuevo autor antes de ingresar su libro');
+        addAuthor();        
+    }
     const newBook = { id: uuidv4(), nombre: titulo, author: idAuthor.id};
 
     data.push(newBook);

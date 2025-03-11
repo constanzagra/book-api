@@ -1,10 +1,3 @@
-// Implementa en los modelos la lógica para leer y
-// escribir datos desde y hacia estos archivos
-// usando el módulo FS.
-//1. Listar autores
-//2. Buscar autores por nombre o nacionalidad
-//3. Agregar nuevos autores
-
 const fs = require('fs');
 const path = require('path');
 const { v4 : uuidv4 } = require('uuid');

@@ -10,7 +10,7 @@ const publishersController = {
     
     addPublisher: (newPublisher) => {
         publisherModel.addPublisher(newPublisher);
-        return responseView.responseFormatter('Editorial agregada exitosamente');
+        return responseView.responseFormatter(newPublisher);
     },
 
     searchPublisher: (data) => {

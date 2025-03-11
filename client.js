@@ -1,13 +1,3 @@
-// En el archivo client.js, implementa un cliente TCP
-// que se conecte al servidor en el puerto 8080.
-// ▪ Implementa comandos para interactuar con la
-// API del servidor, como GET BOOKS, ADD BOOK
-// {}, etc.
-// ▪ Si desean poner mas funcionalidades son libres
-// de hacerlo.
-// ▪ Asegúrate de que el cliente pueda enviar
-// comandos y recibir respuestas correctamente
-// desde el servidor.
 const net = require('net');
 const readline = require('readline');
 const {question} = require('readline-sync')
@@ -17,7 +7,7 @@ const {publishersController} = require('./controllers/publishersController')
 
 
 const HOST = 'localhost';
-const PORT = 8080;
+const PORT = 6661;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -26,32 +16,41 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
 
- client.connect(8080, 'localhost', () => {
+client.connect(6661, 'localhost', () => {
 
     console.log('Conectado al servidor');
     promptUser();
- });
+});
 
- client.on('data', (data) => {
+client.on('data', (data) => {
     console.log('Respuesta del servidor:', data.toString().trim());
     promptUser();
- });
+});
 
- function promptUser() {
-    rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR (nombre, nacionalidad), GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
-        client.write(input.trim()); 
+function promptUser() {
+    console.log("\n****************************");
+    console.log("  📚 COMANDOS DISPONIBLES:");
+    console.log("******************************");
+    console.log("  👥 GET AUTHORS     → Obtener lista de autores");
+    console.log("  ✍️ ADD AUTHOR      → Agregar autor (nombre, nacionalidad)");
+    console.log("  🏛️ GET PUBLISHERS  → Obtener lista de editoriales");
+    console.log("  🏢 ADD PUBLISHER   → Agregar editorial (nombre)");
+    console.log("  📚 GET BOOKS       → Obtener lista de libros");
+    console.log("  ➕ ADD BOOK        → Agregar libro (título, autor, editorial)");
+    console.log("  👋 SALIR para finalizar");
+    console.log("*******************************");
+
+    rl.question('Ingrese un comando: ', (input) => {
+        client.write(input.trim().toUpperCase()); 
     });
-  }
+}
 
-  client.on('error', (error) => {
+client.on('error', (error) => {
     console.error(error);
 })
 });
-
-
 
 client.on('end', () => {
     console.log('Desconectado del servidor');
     process.exit();
 });
-
