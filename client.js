@@ -9,21 +9,49 @@
 // comandos y recibir respuestas correctamente
 // desde el servidor.
 const net = require('net');
-const client = new net.Socket();
+const readline = require('readline');
+const {question} = require('readline-sync')
+const {authorsController} = require('./controllers/authorsController');
+const {booksController} = require('./controllers/booksController')
+const {publishersController} = require('./controllers/publishersController')
 
-client.connect(8085, 'localhost', () => {
+
+const HOST = 'localhost';
+const PORT = 8080;
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+const client = net.createConnection({ host: HOST, port: PORT }, () => {
+
+ client.connect(8080, 'localhost', () => {
+
     console.log('Conectado al servidor');
-    
-    // Enviar comandos al servidor
-    client.write('Hola');
-    // client.write('GET AUTHORS');
-    // client.write('FIND AUTHOR Borges');
+    promptUser();
+ });
+
+ client.on('data', (data) => {
+    console.log('Respuesta del servidor:', data.toString().trim());
+    promptUser();
+ });
+
+ function promptUser() {
+    rl.question('Ingrese un comando (GET AUTHORS, ADD AUTHOR (nombre, nacionalidad), GET PUBLISHERS, ADD PUBLISHER, GET BOOKS, ADD BOOK): ', (input) => {
+        client.write(input.trim()); 
+    });
+  }
+
+  client.on('error', (error) => {
+    console.error(error);
+})
 });
 
-client.on('data', (data) => {
-    console.log('Respuesta del servidor:\n', data.toString());
+
+
+client.on('end', () => {
+    console.log('Desconectado del servidor');
+    process.exit();
 });
 
-client.on('close', () => {
-    console.log('Conexión cerrada');
-});
