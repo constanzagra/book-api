@@ -36,8 +36,8 @@ const server = net.createServer((socket) => {
 
             case 'ADD':
                 if (args[0] === 'AUTHOR') {
-                    const name = args.slice(1, args.length - 1).join(' ');
                     const origin = args.slice(args.length - 1).join(' ');
+                    const name = args.slice(1, args.length - 1).join(' ');
                     const newAuthor = authorsController.addAuthor({author: name, nationality: origin});
                     socket.write(`Autor agregado: ${newAuthor}\n`);
                         //ADD AUTHOR FUNCIONA
@@ -76,6 +76,6 @@ const server = net.createServer((socket) => {
     })
 });
 
-server.listen(6661, () => {
+server.listen(8080, () => {
     console.log('Servidor TCP escuchando en el puerto 8080');
-});
+}); 

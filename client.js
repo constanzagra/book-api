@@ -7,7 +7,7 @@ const {publishersController} = require('./controllers/publishersController')
 
 
 const HOST = 'localhost';
-const PORT = 6661;
+const PORT = 8080;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -16,7 +16,7 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
 
-client.connect(6661, 'localhost', () => {
+client.connect(8080, 'localhost', () => {
 
     console.log('Conectado al servidor');
     promptUser();
