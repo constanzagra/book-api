@@ -27,6 +27,15 @@ client.on('data', (data) => {
     promptUser();
 });
 
+function addBookPrompt(){
+    rl.question("Ingrese el titulo del libro: ", (bookTitle) => {
+        rl.question("Ingrese el autor: ", (bookAuthor) => {
+            const addBookInput = `ADD BOOK + ${bookTitle} + ${bookAuthor}` 
+            client.write(addBookInput)
+        })
+    })
+}
+
 function promptUser() {
     console.log("\n****************************");
     console.log("  📚 COMANDOS DISPONIBLES:");
@@ -36,23 +45,17 @@ function promptUser() {
     console.log("  🏛️ GET PUBLISHERS  → Obtener lista de editoriales");
     console.log("  🏢 ADD PUBLISHER   → Agregar editorial (nombre)");
     console.log("  📚 GET BOOKS       → Obtener lista de libros");
-    console.log("  ➕ ADD BOOK        → Agregar libro (título, autor, editorial)");
+    console.log("  ➕ ADD BOOK        → Agregar libro (título, autor)");
     console.log("  👋 SALIR para finalizar");
     console.log("*******************************");
-
     rl.question('Ingrese un comando: ', (input) => {
         input = input.toUpperCase().trim()
-        if(input === "ADD BOOK"){
-            rl.question("Ingrese el titulo del libro: ", (bookTitle) => {
-                rl.question("Ingrese el autor: ", (bookAuthor) => {
-                    const addBookInput = `ADD BOOK + ${bookTitle} + ${bookAuthor}` 
-                    client.write(addBookInput)
-                })
-            })}
-        client.write(input); 
+        if(input === "ADD BOOK"){addBookPrompt()}
+        else{client.write(input)}; 
     });
-}
-
+    
+} 
+//Continuar editando MENU. Agregar un rl.keyInYN() despues de cada comando ejecutado exitosamente
 client.on('error', (error) => {
     console.error(error);
 });

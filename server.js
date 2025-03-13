@@ -48,7 +48,7 @@ const server = net.createServer((socket) => {
                     socket.write(`Editorial agregada: ${newPublisher}`); 
                         //ADD PUBLISHER FUNCIONA
                 } else if (args[0] === 'BOOK') {
-                    const data = message.split("+")
+                    const data = message.split("+");
                     const name = data.slice(1, data.length -1).join(' ');
                     const author = data.slice(2).join(' ');
                     const newBook = booksController.addBook({titulo: name, autor: author});
