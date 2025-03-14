@@ -76,6 +76,6 @@ const server = net.createServer((socket) => {
     })
 });
 
-server.listen(8081, () => {
+server.listen(8080, () => {
     console.log('Servidor TCP escuchando en el puerto 8080');
 }); 

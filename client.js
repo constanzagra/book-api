@@ -1,13 +1,9 @@
 const net = require('net');
 const readline = require('readline');
-const {question} = require('readline-sync')
-const {authorsController} = require('./controllers/authorsController');
-const {booksController} = require('./controllers/booksController')
-const {publishersController} = require('./controllers/publishersController')
-
+const { keyInYN } = require('readline-sync');
 
 const HOST = 'localhost';
-const PORT = 8081;
+const PORT = 8080;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -15,16 +11,22 @@ const rl = readline.createInterface({
 });
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
-
-client.connect(8081, 'localhost', () => {
-
     console.log('Conectado al servidor');
     promptUser();
 });
 
 client.on('data', (data) => {
-    console.log('Respuesta del servidor:', data.toString().trim());
-    promptUser();
+    console.log('Respuesta del servidor: ', data.toString().trim());
+    yesNoPromt();
+});
+
+client.on('error', (err) => {
+    console.error(`Error en la conexión: ${err.message}`)
+});
+
+client.on('end', () => {
+    console.log('Desconectado del servidor');
+    process.exit();
 });
 
 function addBookPrompt(){
@@ -32,8 +34,8 @@ function addBookPrompt(){
         rl.question("Ingrese el autor: ", (bookAuthor) => {
             const addBookInput = `ADD BOOK + ${bookTitle} + ${bookAuthor}` 
             client.write(addBookInput)
-        })
-    })
+        });
+    });
 }
 
 function promptUser() {
@@ -48,19 +50,25 @@ function promptUser() {
     console.log("  ➕ ADD BOOK        → Agregar libro (título, autor)");
     console.log("  👋 SALIR para finalizar");
     console.log("*******************************");
+
     rl.question('Ingrese un comando: ', (input) => {
         input = input.toUpperCase().trim()
-        if(input === "ADD BOOK"){addBookPrompt()}
-        else{client.write(input)}; 
-    });
-    
-} 
-//Continuar editando MENU. Agregar un rl.keyInYN() despues de cada comando ejecutado exitosamente
-client.on('error', (error) => {
-    console.error(error);
-});
 
-client.on('end', () => {
-    console.log('Desconectado del servidor');
-    process.exit();
-});})
+        if(input === 'ADD BOOK'){
+            addBookPrompt()
+        }else if(input === 'SALIR'){
+            console.log('Desconectando...');
+            client.end();
+        }else{
+            client.write(input)
+        }
+    });
+};
+
+function yesNoPromt() {
+    if(keyInYN('Deseas continuar? (Y/N)')){
+        promptUser()        
+    }else{
+        client.end();
+    }
+};
