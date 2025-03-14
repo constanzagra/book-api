@@ -1,12 +1,17 @@
 [
   {
-    "id": 1,
-    "nombre": "Mariana Enriquez",
+    "id": "c39b76a3-6011-47b7-88a7-b10d30c01fba",
+    "nombre": "MARIANA ENRIQUEZ",
     "nacionalidad": "argentina"
   },
   {
-    "id": 2,
+    "id": "dc7245ed-f89f-45b7-a44c-036cd89416f7",
     "nombre": "Vladimir Lenin",
     "nacionalidad": "rusa"
+  },
+  {
+    "id": "a62c58b8-a102-4e6c-b1c0-720eba1a24e5",
+    "nombre": "FELIPE PIGNA",
+    "nacionalidad": "ARGENTINO"
   }
 ]
