@@ -16,6 +16,12 @@ const booksController = {
         bookModel.addBook(newBook)
 
         return responseView.responseFormatter('Libro agregado exitosamente: ', newBook)
+    },
+
+    searchBook: (book)=>{
+        const books = bookModel.readBooks(); 
+        bookModel.searchBook(book)
+        return responseView.responseFormatter('Libro encontrado: ', books)
     }
 }
 

@@ -12,12 +12,12 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
     console.log('Conectado al servidor');
-    promptUser();
+   // promptUser();
 });
 
 client.on('data', (data) => {
     console.log('Respuesta del servidor: ', data.toString().trim());
-    yesNoPromt();
+   // yesNoPromt();
 });
 
 client.on('error', (err) => {
@@ -38,7 +38,7 @@ function addBookPrompt(){
     });
 }
 
-function promptUser() {
+/*function promptUser() {
     console.log("\n****************************");
     console.log("  📚 COMANDOS DISPONIBLES:");
     console.log("******************************");
@@ -71,4 +71,4 @@ function yesNoPromt() {
     }else{
         client.end();
     }
-};
+};*/

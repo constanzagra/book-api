@@ -30,4 +30,15 @@ const addBook = ({titulo, autor}) => {
     return newBook
 }; 
 
-module.exports = {readBooks, addBook}
+const searchBook = (query) =>{
+    const books = readBooks(); 
+    const result = books.find(book =>
+        book.titulo.toLowerCase() === query.toLowerCase()||
+        book.autor.toLowerCase() === query.toLowerCase()
+        
+    ); 
+
+    return result.titulo
+}
+
+module.exports = {readBooks, addBook, searchBook}

@@ -7,6 +7,10 @@ const {publishersController} = require('./controllers/publishersController')
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
+    let response = ""; 
+    response = booksController.searchBook('Rayuela')
+    console.log(response)
+
     socket.on('data', (data) => {
 
         const message = data.toString().trim();
