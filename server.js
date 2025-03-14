@@ -8,8 +8,8 @@ const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
     let response = ""; 
-    response = booksController.searchBook('Rayuela')
-    console.log(response)
+    response = booksController.searchBookByTitle('Rayuela')
+    console.log(`Libro encontrado: ${response}`)
 
     socket.on('data', (data) => {
 

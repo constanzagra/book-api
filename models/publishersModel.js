@@ -21,9 +21,9 @@ const addPublisher = ({publisherName, location}) => {
 
 const searchPublisher = (query) => {
     const data = readPublishers();
-    return data.filter(publisher => 
-        publisher.nombre.toLowerCase().trim() === query.toLowerCase().trim() 
-        || publisher.pais.toLowerCase().trim() === query.toLowerCase().trim())
+    return data.find(publisher => 
+        publisher.publisherName.toLowerCase().trim() === query.toLowerCase().trim() 
+        || publisher.location.toLowerCase().trim() === query.toLowerCase().trim())
 };
 
 
