@@ -3,6 +3,24 @@ const readline = require('readline')
 const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController');
 const {publishersController} = require('./controllers/publishersController')
+// -Devolver respuestas claras a los clientes (Server)
+// -(Cliente) 
+//      GET BOOKS, ADD BOOK {}, 
+//      GET AUTHORS, ADD AUTHOR, 
+//      GET PUBLISHERS, ADD PUBLISHER, 
+//      SEARCH BOOK(POR DIFERENTES CRITERIOS), 
+//      UPDATE INFO (SOLO LO MENCIONA EN UNA PARTE AL INICIO DEL TP)
+//      SEARCH AUTHORS BY NAME OR NACIONALITY
+// -(Autores) listar autores
+// -(Autores) buscar autores por nombre o nacionalidad
+// -(Autores) a;adir nuevos autores
+// -(Editoriales) listar editoriales
+// -(Editoriales) a;adir nuevas editoriales con sus respectivos atributos
+// -Manejo de errores en todos los modulos, y que los mensajes de error sean claros para los usuarios
+// -(Readme) debe explicar como configurar y ejecutar el proyecto
+// -(Readme) debe incluir ejemplos de comandos que se pueden enviar al servidor tcp y las respuestas esperadas
+// -(Readme) debe estar bien comentado para explicar la funcionalidad de cada seccion
+// - DEBEMOS COMENTAR EL CODIGO
 
 const PORT = 8080;
 const server = net.createServer((socket) => {
