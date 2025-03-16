@@ -4,6 +4,7 @@ const {authorsController} = require('./controllers/authorsController');
 const {booksController} = require('./controllers/booksController');
 const {publishersController} = require('./controllers/publishersController')
 
+const PORT = 8080;
 const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
@@ -27,12 +28,10 @@ const server = net.createServer((socket) => {
                     const publishers = JSON.parse(publishersController.getPublishers());
                     socket.write(`Editoriales: ${JSON.stringify(publishers, null, 2)}\n`);
                     //GET PUBLISHERS FUNCIONA
-
                 } else if (args[0] === 'BOOKS') {
                     const book = JSON.parse(booksController.getBooks());
                     socket.write(`Libros: ${JSON.stringify(book, null ,2)}\n`);
                     //GET BOOKS FUNCIONA
-
                 } else {
                     socket.write('Comando no reconocido\n');
                 }
@@ -60,14 +59,14 @@ const server = net.createServer((socket) => {
                 }else {
                     socket.write('Comando no reconocido\n');
                 }
-                break;
-            
-                case 'SALIR':
-                    command.toUpperCase();
-                    console.log('El cliente ha salido.');
-                    socket.write('Conexión finalizada.');
-                    socket.end();
-                break;
+            break;
+
+            case 'SALIR':
+                command.toUpperCase();
+                console.log('El cliente ha salido.');
+                socket.write('Conexión finalizada.');
+                socket.end();
+            break;
 
             default:
                 socket.write('Comando no reconocido\n');
@@ -80,6 +79,6 @@ const server = net.createServer((socket) => {
     })
 });
 
-server.listen(8080, () => {
+server.listen(PORT, () => {
     console.log('Servidor TCP escuchando en el puerto 8080');
 }); 
