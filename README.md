@@ -1,14 +1,28 @@
 
-# book-api 📓
+# BOOK-API📓
 
-Ésta es una API creada por estudiantes de ADA itw para el módulo backend de la carrera de Node.js, generamos un sistema de manejo símil biblioteca que permite gestionar libros, autores y editoriales, cada quien con un ID generado por medio de UUID, usando el método MVC y completado con un servidor TCP que nos permite interactuar con la data utilizando los comandos predeterminados que te explico un poco más abajo.
+## Descripción
+
+Ésta es una API creada por estudiantes de ADA itw para el módulo de backend de la carrera de Node.js.
+Generamos un sistema de manejo de una biblioteca que permite gestionar libros, autores y editoriales. Cada libro, autor y editorial tienen su propio id generado por medio de UUID. Se usó el patrón de diseño MVC (Modelo - Vista - Controlador) y además se complementó utilizando una comunicación TCP entre un servidor y un cliente local, de esta manera se permite interactual con la información, utilizando los comandos predeterminados que se explican más abajo.
 
 # ¡Empecemos!
 
 ![empecemos!](https://github.com/user-attachments/assets/b004d0f6-6158-4c0a-a823-7553f9251e6f)
-## Comandos 🚀
 
-- GET AUTHORS : Busca y muestra por pantalla la data sobre **todos** los autores.
+## Instalación ⏬
+```bash
+git clone https://github.com/constanzagra/book-api
+cd book-api
+npm install
+npm start (Este comando se ejecuta en una terminal)
+node client.js (Este comando se ejecuta en otra terminal)
+```
+
+## Uso Comandos 🚀
+> [!TIP]
+** GET AUTHORS** : Busca y muestra por pantalla todos los autores que se encuentran.
+    - Ejemplo en terminal: ```GET AUTHORS ```
 
 - GET PUBLISHERS: Busca y muestra por pantalla la data sobre **todas** las editoriales.
 
@@ -23,13 +37,6 @@ _ejemplo:_ ADD AUTHOR Sebastian Fitzek Aleman
 _ejemplo:_ ADD PUBLISHER Santillana Argentina
 
 - SEARCH BOOK: Permite buscar un libro por título
-## Instalación ⏬
-```bash
-git clone https://github.com/constanzagra/book-api
-cd book-api
-npm init 
-npm install uuid
-```
 
 **¡IMPORTANTE!**
 Recordá ejecutar primero el server y luego el cliente para no tener errores en la comunicación.
