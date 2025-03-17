@@ -27,8 +27,6 @@ const server = net.createServer((socket) => {
     console.log('Cliente conectado');
 
     let response = ""; 
-    response = booksController.searchBookByTitle('Rayuela')
-    console.log(`Libro encontrado: ${response}`)
 
     socket.on('data', (data) => {
 
@@ -60,7 +58,7 @@ const server = net.createServer((socket) => {
                     const origin = args.slice(args.length - 1).join(' ');
                     const name = args.slice(1, args.length - 1).join(' ');
                     const newAuthor = authorsController.addAuthor({author: name, nationality: origin});
-                    socket.write(`Autor agregado: ${newAuthor}`);
+                    socket.write(`Added Author: ${newAuthor}`);
                         //ADD AUTHOR FUNCIONA
                 } else if (args[0] === 'PUBLISHER') {
                     const name = args.slice(1, args.length -1).join(' ');
@@ -77,6 +75,23 @@ const server = net.createServer((socket) => {
                 }else {
                     socket.write('Comando no reconocido\n');
                 }
+            break;
+
+            case 'SEARCH':
+                if(args[0] === 'BOOK'){
+                    if(args[2] === 'TITLE'){
+                        const titleBook = args.slice(3, data.length -1).join(' ');
+                        console.log("Title BOOK", titleBook);
+                        response = booksController.searchBookByTitle(titleBook);
+                        
+                        console.log(`Libro encontrado: ${response}`)
+                        socket.write(`Libro encontrado: ${response}`)
+                    }
+                }
+                // console.log("SEARCH");
+                // console.log('Command: ', command);
+                // console.log('Args: ', args);
+                // console.log('Message: ', message);
             break;
 
             case 'SALIR':

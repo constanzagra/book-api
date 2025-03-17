@@ -4,4 +4,11 @@ const responseFormatter = (data) =>{
     } return JSON.stringify(data, null, 2)
 };
 
-module.exports = { responseFormatter };
+const formatError = (message, errorInfo) => {
+    return JSON.stringify({
+        message,
+        errorInfo
+    }, null, 2);
+};
+
+module.exports = { responseFormatter, formatError };

@@ -1,17 +1,17 @@
 [
   {
     "id": "c39b76a3-6011-47b7-88a7-b10d30c01fba",
-    "nombre": "MARIANA ENRIQUEZ",
-    "nacionalidad": "argentina"
+    "authorName": "MARIANA ENRIQUEZ",
+    "nationality": "argentina"
   },
   {
     "id": "dc7245ed-f89f-45b7-a44c-036cd89416f7",
-    "nombre": "Vladimir Lenin",
-    "nacionalidad": "rusa"
+    "authorName": "Vladimir Lenin",
+    "nationality": "rusa"
   },
   {
-    "id": "a62c58b8-a102-4e6c-b1c0-720eba1a24e5",
-    "nombre": "FELIPE PIGNA",
-    "nacionalidad": "ARGENTINO"
+    "id": "e5eae5df-280f-4f51-a7e9-07c084a15fb5",
+    "authorName": "GLORIA",
+    "nationality": "PERU"
   }
 ]

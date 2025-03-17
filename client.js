@@ -12,7 +12,7 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
     console.log('Conectado al servidor');
-   // promptUser();
+   promptUser();
 });
 
 client.on('data', (data) => {
@@ -38,7 +38,7 @@ function addBookPrompt(){
     });
 }
 
-/*function promptUser() {
+function promptUser() {
     console.log("\n****************************");
     console.log("  📚 COMANDOS DISPONIBLES:");
     console.log("******************************");
@@ -48,6 +48,7 @@ function addBookPrompt(){
     console.log("  🏢 ADD PUBLISHER   → Agregar editorial (nombre)");
     console.log("  📚 GET BOOKS       → Obtener lista de libros");
     console.log("  ➕ ADD BOOK        → Agregar libro (título, autor)");
+    console.log("  🔍 SEARCH BOOK BY TITLE → Buscar libro por titulo");
     console.log("  👋 SALIR para finalizar");
     console.log("*******************************");
 
@@ -71,4 +72,4 @@ function yesNoPromt() {
     }else{
         client.end();
     }
-};*/
+};
