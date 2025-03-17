@@ -3,7 +3,7 @@
 
 ## Descripción
 
-Ésta es una API creada por estudiantes de ADA itw para el módulo de backend de la carrera de Node.js.
+Ésta es una API creada por estudiantes de ADA itw para el módulo de Node.js.
 Generamos un sistema de manejo de una biblioteca que permite gestionar libros, autores y editoriales. Cada libro, autor y editorial tienen su propio id generado por medio de UUID. Se usó el patrón de diseño MVC (Modelo - Vista - Controlador) y además se complementó utilizando una comunicación TCP entre un servidor y un cliente local, de esta manera se permite interactual con la información, utilizando los comandos predeterminados que se explican más abajo.
 
 # ¡Empecemos!
@@ -24,9 +24,9 @@ node client.js (Este comando se ejecuta en otra terminal)
 **GET AUTHORS** : Busca y muestra por pantalla todos los autores que se encuentran.
     - Ejemplo en terminal: ```GET AUTHORS ```
 
-- GET PUBLISHERS: Busca y muestra por pantalla la data sobre **todas** las editoriales.
+**GET PUBLISHERS**: Busca y muestra por pantalla la data sobre **todas** las editoriales.
 
-- GET BOOKS: Busca y muestra por pantalla la data sobre **todos** los libros.
+**GET BOOKS**: Busca y muestra por pantalla la data sobre **todos** los libros*.
 
 - ADD BOOK: Permite añadir **un** libro a la lista, se solicitará que se ingrese el título y autor del mismo una vez ejecutado el comando.
 
