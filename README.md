@@ -37,7 +37,7 @@ Recordá ejecutar primero el server y luego el cliente para no tener errores en 
 
 - [Constanza Riveros Ayala ](https://github.com/constanzagra)
 
-- [Fiorella Roma ](https://github.com/fiorellam)
+- [Fiorella Rodriguez Mateo ](https://github.com/fiorellam)
 
 - [Giselle Rastenis ](https://github.com/GegeRastenis)
 
