@@ -35,7 +35,7 @@ npm install uuid
 Recordá ejecutar primero el server y luego el cliente para no tener errores en la comunicación.
 ## Autoras 🕵️‍♂️
 
-- [Constanza Gra ](https://github.com/constanzagra)
+- [Constanza Riveros Ayala ](https://github.com/constanzagra)
 
 - [Fiorella Roma ](https://github.com/fiorellam)
 
