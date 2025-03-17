@@ -17,7 +17,7 @@ const client = net.createConnection({ host: HOST, port: PORT }, () => {
 
 client.on('data', (data) => {
     console.log('\nServer Answer: ', data.toString().trim());
-   // yesNoPromt();
+    yesNoPrompt();
 });
 
 client.on('error', (err) => {
@@ -66,11 +66,10 @@ function promptUser() {
         }else{
             client.write(input)
         }
-        promptUser();
     });
 };
 
-function yesNoPromt() {
+function yesNoPrompt() {
     if(keyInYN('Would you like to continue? (Y/N)')){
         promptUser()        
     }else{

@@ -55,4 +55,5 @@ const searchBookByTitle = (query) =>{
     }
 }
 
+//TODO: SEARCH BOOK BY AUTHOR
 module.exports = {readBooks, addBook, searchBookByTitle}
