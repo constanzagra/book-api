@@ -8,56 +8,55 @@ const booksPath = path.join(__dirname, '../data/books.json');
 const readBooks = () => {
     try{
         if(!fs.existsSync(booksPath)){
-            throw new Error("⚠️ Books file doesn't exist");
+            throw new Error("⚠️  Books file doesn't exist");
         }
         const data = fs.readFileSync(booksPath, 'utf-8')
         return JSON.parse(data)
     } catch(err) {
-        console.error("⚠️ Error reading books", err.message);
+        console.error("⚠️  Error reading books", err.message);
         throw err;
     }
 };
 
 const addBook = ({titulo, autor}) => {
     try {
-        const data = readBooks(); 
+        const books = readBooks(); 
         const authors = readAuthors();
     
-        const idAuthor = authors.find(author =>
-            author.nombre.toLowerCase().trim() === autor.toLowerCase().trim());
+        const author = authors.find(author =>
+            author.name.toLowerCase().trim() === autor.toLowerCase().trim());
         
+        //TODO: VALIDAMOS LA PARTE DE SI ENCUENTRA AL AUTOR Y SI NO QUE LE APAREZCA AL CLIENTE QUE NO EXISTE EL AUTOR QUE PUSO?
         // if(!idAuthor){
         //     console.log('No existe un perfil para ese autor. \n Registra al nuevo autor antes de ingresar su libro');
         //     addAuthor();        
         // }
         console.log(titulo);
             
-        const newBook = { id: uuidv4(), nombre: titulo, author: autor};
-        data.push(newBook);
-        fs.writeFileSync(booksPath, JSON.stringify(data, null, 2));
+        const newBook = { id: uuidv4(), title: titulo, author: author.id};
+        books.push(newBook);
+        fs.writeFileSync(booksPath, JSON.stringify(books, null, 2));
         return newBook
     } catch (err) {
-        console.error("⚠️ Error saving book:", err.message);
+        console.error("⚠️  Error saving book:", err.message);
         throw err; 
     }
 }; 
-
+//TODO: LO CAMBIAMOS POR FILTER Y USAMOS INCLUDES?
 const searchBookByTitle = (query) =>{
     try{
         const books = readBooks(); 
         const result = books.find(book =>
-            book.nombre.toLowerCase() === query.toLowerCase()/*||
-            book.author.toLowerCase() === query.toLowerCase()*/
+            book.title.toLowerCase() === query.toLowerCase()
         ); 
 
         if(!result){
-            console.error('⚠️ Book not found');
-            return null;
+            throw new Error('⚠️  Book not found');
         }
-        return JSON.stringify(result);
+        return result;
     } catch(err){
-        console.error("⚠️ Error searching that book:", err.message);
-        return null;
+        console.error("⚠️  Error searching that book:", err.message);
+        throw err;
     }
 }
 

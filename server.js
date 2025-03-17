@@ -24,7 +24,7 @@ const {publishersController} = require('./controllers/publishersController')
 
 const PORT = 8080;
 const server = net.createServer((socket) => {
-    console.log('Cliente conectado');
+    console.log('✅ Client connected');
 
     let response = ""; 
 
@@ -47,7 +47,7 @@ const server = net.createServer((socket) => {
                 } else if (args[0] === 'BOOKS') {
                     const book = JSON.parse(booksController.getBooks());
                     socket.write(`Libros: ${JSON.stringify(book, null ,2)}\n`);
-                    //GET BOOKS FUNCIONA
+                    //GET BOOKS FUNCIONA ✅
                 } else {
                     socket.write('Comando no reconocido\n');
                 }
@@ -57,7 +57,7 @@ const server = net.createServer((socket) => {
                 if (args[0] === 'AUTHOR') {
                     const origin = args.slice(args.length - 1).join(' ');
                     const name = args.slice(1, args.length - 1).join(' ');
-                    const newAuthor = authorsController.addAuthor({author: name, nationality: origin});
+                    const newAuthor = authorsController.addAuthor({name: name, nationality: origin});
                     socket.write(`Added Author: ${newAuthor}`);
                         //ADD AUTHOR FUNCIONA
                 } else if (args[0] === 'PUBLISHER') {
@@ -71,7 +71,8 @@ const server = net.createServer((socket) => {
                     const name = data.slice(1, data.length -1).join(' ');
                     const author = data.slice(2).join(' ');
                     const newBook = booksController.addBook({titulo: name, autor: author});
-                    socket.write(`Libro Agregado: ${newBook}`);                     
+                    socket.write(`Libro Agregado: ${newBook}`);
+                    //ADD BOOK FUNCIONA ✅ //TODO: POR EL MOMENTO GUARDA CON ID DE AUTHOR, FALTA EL PUBLISHER                     
                 }else {
                     socket.write('Comando no reconocido\n');
                 }
@@ -81,37 +82,57 @@ const server = net.createServer((socket) => {
                 if(args[0] === 'BOOK'){
                     if(args[2] === 'TITLE'){
                         const titleBook = args.slice(3, data.length -1).join(' ');
-                        console.log("Title BOOK", titleBook);
                         response = booksController.searchBookByTitle(titleBook);
-                        
-                        console.log(`Libro encontrado: ${response}`)
                         socket.write(`Libro encontrado: ${response}`)
+                        //SEARCH BOOK BY TITLE FUNCIONA ✅
+                        
                     }
                 }
+                if(args[0] === 'AUTHOR'){
+                    const nameOrNationality = args.slice(1, data.length -1).join(' ');
+                    response = authorsController.searchAuthor(nameOrNationality);
+                    socket.write(`Author founded: ${response}`)
+                    //SEARCH AUTHOR FUNCIONA POR NOMBRE O NACIONALIDAD
+                }
+                if(args[0] === 'PUBLISHER'){
+                    const nameOrLocation = args.slice(1, data.length -1).join(' ');
+                    response = publishersController.searchPublisher(nameOrLocation);
+                    socket.write(`Publisher founded: ${response}`)
+                    // SEARCH PUBLISHER FUNCIONA POR NOMBRE O LOCALIZACION
+                }
+                
                 // console.log("SEARCH");
                 // console.log('Command: ', command);
                 // console.log('Args: ', args);
                 // console.log('Message: ', message);
             break;
 
-            case 'SALIR':
+            case 'EXIT':
                 command.toUpperCase();
-                console.log('El cliente ha salido.');
-                socket.write('Conexión finalizada.');
+                socket.write('Connection finished!');
                 socket.end();
             break;
 
             default:
-                socket.write('Comando no reconocido\n');
+                socket.write('Command not recognized!\n');
                 break;
         }
     });
 
-    socket.on('error', (error) => {
-        console.error(error);
+    socket.on('error', (err) => {
+        console.error(`⚠️ Error en la conexión con el cliente: ${err.message}`);
     })
+
+    //Client is correctly disconnected
+    socket.on('end', () => {
+        console.log('⚠️  Client has disconnected')
+    })
+
+    socket.on('close', () => {
+        console.log('❌ Client connection is closed');
+    });
 });
 
 server.listen(PORT, () => {
-    console.log('Servidor TCP escuchando en el puerto 8080');
+    console.log(`🔊 TCP Server is listening on PORT ${PORT}`);
 }); 

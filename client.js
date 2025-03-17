@@ -16,21 +16,22 @@ const client = net.createConnection({ host: HOST, port: PORT }, () => {
 });
 
 client.on('data', (data) => {
-    console.log('Servers Answer: ', data.toString().trim());
+    console.log('\nServer Answer: ', data.toString().trim());
    // yesNoPromt();
 });
 
 client.on('error', (err) => {
-    console.error(`⚠️ Connection error: ${err.message}`)
+    console.error(`\n❌  Connection error, couldn't connect to server: ${err.message}`)
 });
 
 client.on('end', () => {
-    console.log('Disconnected from server');
+    console.log('\n⚠️  Disconnected from server');
     process.exit();
 });
 
 function addBookPrompt(){
     rl.question("Please insert the book title: ", (bookTitle) => {
+        
         rl.question("Please insert the author: ", (bookAuthor) => {
             const addBookInput = `ADD BOOK + ${bookTitle} + ${bookAuthor}` 
             client.write(addBookInput)
@@ -42,12 +43,14 @@ function promptUser() {
     console.log("\n****************************");
     console.log("  📚 AVAILABLE COMMANDS:");
     console.log("******************************");
-    console.log("  👥 GET AUTHORS     → Get authors' list");
-    console.log("  ✍️ ADD AUTHOR      → Add an author (name, nationality)");
-    console.log("  🏛️ GET PUBLISHERS  → Get publishers' list");
-    console.log("  🏢 ADD PUBLISHER   → Add publisher (name)");
-    console.log("  📚 GET BOOKS       → Get books' list");
-    console.log("  ➕ ADD BOOK        → Add a book (title, author)");
+    console.log("  👥 GET AUTHORS          → Get authors list");
+    console.log("  ✍️ ADD AUTHOR           → Add an author (name, nationality)");
+    console.log("  🔍 SEARCH AUTHOR        → Search an author by (name author o nationality)");
+    console.log("  🏛️ GET PUBLISHERS       → Get publishers list");
+    console.log("  🏢 ADD PUBLISHER        → Add publisher (name)");
+    console.log("  🔍 SEARCH PUBLISHER     → Search a publisher by (name or location)");
+    console.log("  📚 GET BOOKS            → Get books list");
+    console.log("  ➕ ADD BOOK             → Add a book (title, author)");
     console.log("  🔍 SEARCH BOOK BY TITLE → Search a book by title");
     console.log("  👋 EXIT to finish");
     console.log("*******************************");
@@ -63,6 +66,7 @@ function promptUser() {
         }else{
             client.write(input)
         }
+        promptUser();
     });
 };
 

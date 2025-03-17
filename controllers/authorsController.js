@@ -3,18 +3,30 @@ const responseView = require('../views/responseFormatter');
 
 const authorsController = {
     getAuthors: () => {
-        const authors = authorModel.readAuthors();
-        return responseView.responseFormatter(authors);
+        try{
+            const authors = authorModel.readAuthors();
+            return responseView.responseFormatter(authors);
+        } catch(err){
+            return responseView.formatError("⚠️  Error retrieving authors", err.message);
+        }
     },
     
     addAuthor: (newAuthor) => {
-        authorModel.addAuthor(newAuthor);
-        return responseView.responseFormatter(newAuthor);
+        try{
+            authorModel.addAuthor(newAuthor);
+            return responseView.responseFormatter(newAuthor);
+        } catch(err){
+            return responseView.formatError("⚠️  Error adding author", err.message);
+        }
     },
 
-    searchAuthor: (data) => {
-        const results = authorModel.searchAuthor(data);
-        return results;
+    searchAuthor: (query) => {
+        try{
+            const results = authorModel.searchAuthor(query);
+            return responseView.responseFormatter(results);
+        } catch(err){
+            return responseView.formatError("⚠️  Search failed", err.message);
+        }
     }
 };
 

@@ -2,29 +2,50 @@ const fs = require('fs');
 const path = require('path');
 const { v4 : uuidv4 } = require('uuid');
 
-const dataPath = path.join(__dirname, '../data/publishers.json');
+const publisherPath = path.join(__dirname, '../data/publishers.json');
 
 const readPublishers = () => {
-        const data = fs.readFileSync(dataPath, 'utf-8')
+    try{
+        if(!fs.existsSync(publisherPath)){
+            throw new Error("⚠️  Publishers file doesn't exist");
+        }
+        const data = fs.readFileSync(publisherPath, 'utf-8')
         return JSON.parse(data)
+    } catch(err){
+        console.error("⚠️ Error reading publishers ", err.message)
+        throw err;
+    }
 };
 
-
 const addPublisher = ({publisherName, location}) => { 
-    const publishers = readPublishers();
-    const newPublisher = { id: uuidv4(), nombre: publisherName, ubicacion: location}; 
-
-    publishers.push(newPublisher);
-    fs.writeFileSync(dataPath, JSON.stringify(publishers, null, 2))
-    return newPublisher;
+    try{
+        const publishers = readPublishers();
+        const newPublisher = { id: uuidv4(), nombre: publisherName, ubicacion: location}; 
+    
+        publishers.push(newPublisher);
+        fs.writeFileSync(publisherPath, JSON.stringify(publishers, null, 2))
+        return newPublisher;
+    }catch(err){
+        console.error("⚠️ Error saving publisher", err.message);
+        throw err; 
+    }
 }; 
 
 const searchPublisher = (query) => {
-    const data = readPublishers();
-    return data.find(publisher => 
-        publisher.publisherName.toLowerCase().trim() === query.toLowerCase().trim() 
-        || publisher.location.toLowerCase().trim() === query.toLowerCase().trim())
+    try{
+        const publishers = readPublishers();
+        const results = publishers.filter(publisher => 
+            publisher.name.toLowerCase().includes(query.toLowerCase()) ||
+            publisher.location.toLowerCase().includes(query.toLowerCase())
+        )
+        if(results.length === 0){
+            throw new Error("❌ Publisher not found");
+        }
+        return results;
+    }catch(err){
+        console.error("⚠️ Error searching publisher", error.message);
+        throw err;
+    }
 };
-
 
 module.exports = { readPublishers, addPublisher, searchPublisher }  
