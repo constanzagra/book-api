@@ -20,8 +20,8 @@ node client.js (Este comando se ejecuta en otra terminal)
 ```
 
 ## Uso Comandos 🚀
-> [!TIP]
-** GET AUTHORS** : Busca y muestra por pantalla todos los autores que se encuentran.
+> [!]
+**GET AUTHORS** : Busca y muestra por pantalla todos los autores que se encuentran.
     - Ejemplo en terminal: ```GET AUTHORS ```
 
 - GET PUBLISHERS: Busca y muestra por pantalla la data sobre **todas** las editoriales.
