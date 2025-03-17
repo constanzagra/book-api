@@ -37,7 +37,7 @@ const addBook = ({titulo, autor}) => {
         fs.writeFileSync(booksPath, JSON.stringify(data, null, 2));
         return newBook
     } catch (err) {
-        console.error("Error al guardar el libro:", err.message);
+        console.error("⚠️ Error saving book:", err.message);
         throw err; 
     }
 }; 
@@ -51,12 +51,12 @@ const searchBookByTitle = (query) =>{
         ); 
 
         if(!result){
-            console.error('No se encontró ese libro');
+            console.error('⚠️ Book not found');
             return null;
         }
         return JSON.stringify(result);
     } catch(err){
-        console.error("Error al buscar el libro:", err.message);
+        console.error("⚠️ Error searching that book:", err.message);
         return null;
     }
 }

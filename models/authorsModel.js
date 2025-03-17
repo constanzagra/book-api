@@ -19,8 +19,6 @@ const readAuthors = () => {
 
 const addAuthor = (authorObject) => {
     console.log('Add author')
-    // console.log('author desde model', author);
-    // console.log('origin desde model', origin)
     console.log('Author object', authorObject);
     try{
         const authors = readAuthors();
