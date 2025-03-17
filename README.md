@@ -3,7 +3,7 @@
 
 ## Descripción
 
-Ésta es una API creada por estudiantes de ADA itw para el módulo de Node.js.
+Ésta es una API creada por estudiantes de ADA itw para el módulo de Node.js. /n
 Generamos un sistema de manejo de una biblioteca que permite gestionar libros, autores y editoriales. Cada libro, autor y editorial tienen su propio id generado por medio de UUID. Se usó el patrón de diseño MVC (Modelo - Vista - Controlador) y además se complementó utilizando una comunicación TCP entre un servidor y un cliente local, de esta manera se permite interactual con la información, utilizando los comandos predeterminados que se explican más abajo.
 
 # ¡Empecemos!
