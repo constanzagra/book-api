@@ -26,13 +26,9 @@ const addBook = ({titulo, autor}) => {
         const author = authors.find(author =>
             author.name.toLowerCase().trim() === autor.toLowerCase().trim());
         
-        //TODO: VALIDAMOS LA PARTE DE SI ENCUENTRA AL AUTOR Y SI NO QUE LE APAREZCA AL CLIENTE QUE NO EXISTE EL AUTOR QUE PUSO?
-        // if(!idAuthor){
-        //     console.log('No existe un perfil para ese autor. \n Registra al nuevo autor antes de ingresar su libro');
-        //     addAuthor();        
-        // }
-        console.log(titulo);
-            
+        if(!author){
+            throw new Error("⚠️  Author profile doesn't exist. Register a new author before adding a new book");
+        }
         const newBook = { id: uuidv4(), title: titulo, author: author.id};
         books.push(newBook);
         fs.writeFileSync(booksPath, JSON.stringify(books, null, 2));
@@ -42,18 +38,17 @@ const addBook = ({titulo, autor}) => {
         throw err; 
     }
 }; 
-//TODO: LO CAMBIAMOS POR FILTER Y USAMOS INCLUDES?
 const searchBookByTitle = (query) =>{
     try{
         const books = readBooks(); 
-        const result = books.find(book =>
-            book.title.toLowerCase() === query.toLowerCase()
+        const results = books.filter(book =>
+            book.title.toLowerCase().includes(query.toLowerCase())
         ); 
 
-        if(!result){
+        if(results.length === 0){
             throw new Error('⚠️  Book not found');
         }
-        return result;
+        return results;
     } catch(err){
         console.error("⚠️  Error searching that book:", err.message);
         throw err;
