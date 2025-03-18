@@ -14,9 +14,7 @@ const booksController = {
     addBook: (newBook) => {
         try{
             bookModel.addBook(newBook)
-            //TODO: LO QUE LE APARECE AL CLIENTE AL MOMENTO DE QUE SE CREA EXITOSAMENTE
-            //TODO: EL LIBRO Servers Answer:  Libro Agregado: "Book added successfully: "
-            return responseView.responseFormatter('Book added successfully: ', newBook)
+            return responseView.responseFormatter(newBook)
         } catch (err) {
             return responseView.formatError("⚠️  Error adding book", err.message);
         }

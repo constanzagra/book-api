@@ -7,7 +7,7 @@ const authorsPath = path.join(__dirname, '../data/authors.json');
 const readAuthors = () => {
     try{
         if(!fs.existsSync(authorsPath)){
-            console.error("⚠️ Authors file doesn't exist");
+            throw new Error("⚠️ Authors file doesn't exist");
         }
         const data = fs.readFileSync(authorsPath, 'utf-8')
         return JSON.parse(data)
