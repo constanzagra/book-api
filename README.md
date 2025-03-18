@@ -51,6 +51,10 @@ node client.js (Este comando se ejecuta en otra terminal)
 **¡IMPORTANTE!**
 Recordá ejecutar primero el server y luego el cliente para no tener errores en la comunicación.
 
+**DEMO**
+![image](https://github.com/user-attachments/assets/7eb4cab2-974b-45d7-a8b7-882b6db9fc08)
+
+
 ## Autoras 🕵️‍♂️
 
 - [Constanza Riveros Ayala ](https://github.com/constanzagra)
