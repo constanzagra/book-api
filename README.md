@@ -24,17 +24,11 @@ node client.js (Este comando se ejecuta en otra terminal)
 **GET AUTHORS** : Busca y muestra por pantalla todos los autores que se encuentran.
 - Ejemplo: ```GET AUTHORS ```
 
-<<<<<<< HEAD
 **GET PUBLISHERS**: Busca y muestra por pantalla todas las editoriales.
 - Ejemplo: ```GET PUBLISHERS ```
 
 **GET BOOKS**: Busca y muestra por pantalla todos los libros.
 - Ejemplo: ```GET BOOKS ```
-=======
-**GET PUBLISHERS**: Busca y muestra por pantalla la data sobre **todas** las editoriales.
-
-**GET BOOKS**: Busca y muestra por pantalla la data sobre **todos** los libros*.
->>>>>>> 2ec2df055ae0d9c902509ce7b619109e89e6effb
 
 **ADD BOOK**: Permite añadir un libro a la lista, se solicitará que se ingrese el título y el nombre del autor del libro una vez ejecutado el comando.
 
