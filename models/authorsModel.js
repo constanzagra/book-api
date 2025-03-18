@@ -17,6 +17,7 @@ const readAuthors = () => {
     }
 };
 
+//TODO: Falta manejar cuando no se haya ingresado los datos necesarios (Nombre y nacionalidad)
 const addAuthor = (authorObject) => {
     try{
         const authors = readAuthors();

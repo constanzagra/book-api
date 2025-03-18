@@ -20,26 +20,37 @@ node client.js (Este comando se ejecuta en otra terminal)
 ```
 
 ## Uso Comandos 🚀
-> [!]
+
 **GET AUTHORS** : Busca y muestra por pantalla todos los autores que se encuentran.
-    - Ejemplo en terminal: ```GET AUTHORS ```
+- Ejemplo: ```GET AUTHORS ```
 
-- GET PUBLISHERS: Busca y muestra por pantalla la data sobre **todas** las editoriales.
+**GET PUBLISHERS**: Busca y muestra por pantalla todas las editoriales.
+- Ejemplo: ```GET PUBLISHERS ```
 
-- GET BOOKS: Busca y muestra por pantalla la data sobre **todos** los libros.
+**GET BOOKS**: Busca y muestra por pantalla todos los libros.
+- Ejemplo: ```GET BOOKS ```
 
-- ADD BOOK: Permite añadir **un** libro a la lista, se solicitará que se ingrese el título y autor del mismo una vez ejecutado el comando.
+**ADD BOOK**: Permite añadir un libro a la lista, se solicitará que se ingrese el título y el nombre del autor del libro una vez ejecutado el comando.
 
-- ADD AUTHOR: Permite añadir **un** autor ingresando los datos dentro del mismo comando.  el formato a utilizar es "ADD AUTHOR {nombre} {nacionalidad}" 
-_ejemplo:_ ADD AUTHOR Sebastian Fitzek Aleman
+- 1. ```ADD BOOK ``` (Solo se escribe este comando primero)
+- 2. Después se nos solicitará que se ingrese el titulo del libro ```La ladrona ```
+- 3. Ingresamos el nombre del autor exactamente como viene en el catálogo de autores ```Mariana Enriquez ```
 
-- ADD PUBLISHER: Permite añadir **una** editorial ingresando los datos dentro del mismo comando. El formato a utilizar es "ADD PUBLISHER {nombre} {país}"
-_ejemplo:_ ADD PUBLISHER Santillana Argentina
+**ADD AUTHOR**: Permite añadir un autor ingresando los datos dentro del mismo comando.  
+- El formato a utilizar es "ADD AUTHOR {nombre} {nacionalidad}" 
+- Ejemplo: ```ADD AUTHOR Sebastian Fitzek Aleman```
 
-- SEARCH BOOK: Permite buscar un libro por título
+**ADD PUBLISHER**: Permite añadir una editorial ingresando los datos dentro del mismo comando. 
+- El formato a utilizar es "ADD PUBLISHER {nombre} {país}"
+- Ejemplo: ```ADD PUBLISHER Santillana Argentina```
+
+**SEARCH BOOK BY TITLE**: Permite buscar un libro por título
+- El formato a utilizar es "SEARCH BOOK BY TITLE {TITULO}"
+- Ejemplo: ``` SEARCH BOOK BY TITLE RAYUELA ```
 
 **¡IMPORTANTE!**
 Recordá ejecutar primero el server y luego el cliente para no tener errores en la comunicación.
+
 ## Autoras 🕵️‍♂️
 
 - [Constanza Riveros Ayala ](https://github.com/constanzagra)
