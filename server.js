@@ -78,7 +78,7 @@ const server = net.createServer((socket) => {
                 }
             break;
 
-            case 'SEARCH':
+            case 'SEARCH': 
                 if(args[0] === 'BOOK'){
                     if(args[2] === 'TITLE'){
                         const titleBook = args.slice(3, data.length -1).join(' ');
