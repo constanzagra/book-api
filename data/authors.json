@@ -8,5 +8,20 @@
     "id": "b1d9985b-ccdd-485c-8b71-66d3a42e55ad",
     "name": "CORTAZAR",
     "nationality": "ARGENTINO"
+  },
+  {
+    "id": "c33b15b0-66c2-4122-819e-2868c69cc823",
+    "name": "FELIPE PIGNA",
+    "nationality": "ARGENTINA"
+  },
+  {
+    "id": "4eaea72b-d4dc-453a-ac99-0f8061e9dddf",
+    "name": "",
+    "nationality": "AUTHOR"
+  },
+  {
+    "id": "83d5e1a9-9337-4f4a-bf9b-4a6aef0b8345",
+    "name": "SAINT EXUPERY",
+    "nationality": "FRANCIA"
   }
 ]

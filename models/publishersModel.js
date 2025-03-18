@@ -20,7 +20,7 @@ const readPublishers = () => {
 const addPublisher = ({publisherName, location}) => { 
     try{
         const publishers = readPublishers();
-        const newPublisher = { id: uuidv4(), nombre: publisherName, ubicacion: location}; 
+        const newPublisher = { id: uuidv4(), name: publisherName, location: location}; 
     
         publishers.push(newPublisher);
         fs.writeFileSync(publisherPath, JSON.stringify(publishers, null, 2))
@@ -43,9 +43,9 @@ const searchPublisher = (query) => {
         }
         return results;
     }catch(err){
-        console.error("⚠️ Error searching publisher", error.message);
+        console.error("⚠️ Error searching publisher", err.message);
         throw err;
-    }
+    } 
 };
 
 module.exports = { readPublishers, addPublisher, searchPublisher }  
