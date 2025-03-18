@@ -12,12 +12,12 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({ host: HOST, port: PORT }, () => {
     console.log('Connecting to server');
-   promptUser();
+    promptUser();
 });
 
 client.on('data', (data) => {
     console.log('\nServer Answer: ', data.toString().trim());
-    yesNoPrompt();
+    yesNoPromt();
 });
 
 client.on('error', (err) => {
@@ -69,10 +69,12 @@ function promptUser() {
     });
 };
 
-function yesNoPrompt() {
-    if(keyInYN('Would you like to continue? (Y/N)')){
-        promptUser()        
-    }else{
-        client.end();
-    }
-};
+function yesNoPromt() {
+    rl.question('Would you like to continue? (Y/N) ', (answer) => {
+        if (answer.toUpperCase() === 'Y') {
+            promptUser();
+        } else {
+            client.end();
+        }
+    });
+}
