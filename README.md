@@ -8,7 +8,7 @@ Generamos un sistema de manejo de una biblioteca que permite gestionar libros, a
 
 # ¡Empecemos!
 
-![empecemos!](https://github.com/user-attachments/assets/b004d0f6-6158-4c0a-a823-7553f9251e6f)
+![empecemos!](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTVnY2MyMHgzdTRnZnVic3l0NXdmbTE0aDNkcm54MHV1MDZ1eWgzdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LMcB8XospGZO8UQq87/giphy.gif)
 
 ## Instalación ⏬
 ```bash
@@ -18,6 +18,8 @@ npm install
 npm start (Este comando se ejecuta en una terminal)
 node client.js (Este comando se ejecuta en otra terminal)
 ```
+**¡IMPORTANTE!**
+Recordá ejecutar primero el server y luego el cliente para no tener errores en la comunicación.
 
 ## Uso Comandos 🚀
 
@@ -47,9 +49,6 @@ node client.js (Este comando se ejecuta en otra terminal)
 **SEARCH BOOK BY TITLE**: Permite buscar un libro por título
 - El formato a utilizar es "SEARCH BOOK BY TITLE {TITULO}"
 - Ejemplo: ``` SEARCH BOOK BY TITLE RAYUELA ```
-
-**¡IMPORTANTE!**
-Recordá ejecutar primero el server y luego el cliente para no tener errores en la comunicación.
 
 **DEMO**
 ![image](https://github.com/user-attachments/assets/7eb4cab2-974b-45d7-a8b7-882b6db9fc08)
