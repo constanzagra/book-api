@@ -41,18 +41,18 @@ function addBookPrompt(){
 
 function promptUser() {
     console.log("\n****************************");
-    console.log("  📚 AVAILABLE COMMANDS:");
+    console.log("  ✅ AVAILABLE COMMANDS:");
     console.log("******************************");
-    console.log("  👥 GET AUTHORS          → Get authors list");
-    console.log("  ✍️ ADD AUTHOR           → Add an author (name, nationality)");
-    console.log("  🔍 SEARCH AUTHOR        → Search an author by (name author o nationality)");
-    console.log("  🏛️ GET PUBLISHERS       → Get publishers list");
-    console.log("  🏢 ADD PUBLISHER        → Add publisher (name)");
-    console.log("  🔍 SEARCH PUBLISHER     → Search a publisher by (name or location)");
-    console.log("  📚 GET BOOKS            → Get books list");
+    console.log("  ✍️  GET AUTHORS          → Get authors list");
+    console.log("  ➕ ADD AUTHOR           → Add an author (name, nationality)");
+    console.log("  ✔️SEARCH AUTHOR        → Search an author by (name author o nationality)");
+    console.log("  ✍️  GET PUBLISHERS       → Get publishers list");
+    console.log("  ➕ ADD PUBLISHER        → Add publisher (name)");
+    console.log("  ✔️  SEARCH PUBLISHER     → Search a publisher by (name or location)");
+    console.log("  ✍️  GET BOOKS            → Get books list");
     console.log("  ➕ ADD BOOK             → Add a book (title, author)");
-    console.log("  🔍 SEARCH BOOK BY TITLE → Search a book by title");
-    console.log("  👋 EXIT to finish");
+    console.log("  ✔️  SEARCH BOOK BY TITLE → Search a book by title");
+    console.log("  ❌ EXIT to finish");
     console.log("*******************************");
 
     rl.question('Please insert a command: ', (input) => {
