@@ -82,7 +82,7 @@ const server = net.createServer((socket) => {
                         socket.write('Error: Title and nationality cannot be empty.\n');
                         return;
                     }
-                    const newBook = booksController.addBook({titulo: name, autor: author});
+                    const newBook = booksController.addBook({newTitle: name, newBookAuthor: author});
                     socket.write(`Book added: ${newBook}`);
                     //ADD BOOK FUNCIONA ✅                 
                 }else {

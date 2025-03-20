@@ -18,18 +18,18 @@ const readBooks = () => {
     }
 };
 
-const addBook = ({titulo, autor}) => {
+const addBook = ({newTitle, newBookAuthor}) => {
     try {
         const books = readBooks(); 
         const authors = readAuthors();
     
         const author = authors.find(author =>
-            author.name.toLowerCase().trim() === autor.toLowerCase().trim());
+            author.name.toLowerCase().trim() === newBookAuthor.toLowerCase().trim());
         
         if(!author){
             throw new Error("⚠️  Author profile doesn't exist. Register a new author before adding a new book");
         }
-        const newBook = { id: uuidv4(), title: titulo, author: author.id};
+        const newBook = { id: uuidv4(), title: newTitle, author: author.id};
         books.push(newBook);
         fs.writeFileSync(booksPath, JSON.stringify(books, null, 2));
         return newBook
