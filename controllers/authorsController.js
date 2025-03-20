@@ -1,6 +1,9 @@
+// Importamos el módelo de autor que se generó en authorModel y responseView
 const authorModel = require('../models/authorsModel');
 const responseView = require('../views/responseFormatter');
 
+// En este archivo hacemos uso de las funciones creadas en el modelo y mostramos la información que fue procesada
+// Finalmente se manejan los errores en cada una de las funciones para obtener, buscar y agregar
 const authorsController = {
     getAuthors: () => {
         try{
@@ -30,4 +33,5 @@ const authorsController = {
     }
 };
 
+// Se procede a exportar el módulo generado para poder reutilizarlo 
 module.exports = { authorsController };

@@ -50,6 +50,10 @@ Recordá ejecutar primero el server y luego el cliente para no tener errores en 
 - El formato a utilizar es "SEARCH BOOK BY TITLE título"
 - Ejemplo: ``` SEARCH BOOK BY TITLE RAYUELA ```
 
+**SEARCH BOOK BY AUTHOR**: Permite buscar un libro por autor.
+- El formato a utilizar es "SEARCH BOOK BY AUTHOR autor"
+- Ejemplo: ``` SEARCH BOOK BY AUTHOR Mariana Enriquez ```
+
 **SEARCH AUTHOR**: Permite buscar un autor por nombre o nacionalidad.
 - El formato a utilizar es "SEARCH AUTHOR nombre || nacionalidad" 
 - Ejemplo: ``` SEARCH AUTHOR Julio Cortazar  ```
