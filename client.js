@@ -1,7 +1,9 @@
+// Importamos net y readline para que el cliente pueda interactuar con el server
 const net = require('net');
 const readline = require('readline');
 const { keyInYN } = require('readline-sync');
 
+//conectamos con el host correspondiente
 const HOST = 'localhost';
 const PORT = 8080;
 
@@ -15,11 +17,13 @@ const client = net.createConnection({ host: HOST, port: PORT }, () => {
     promptUser();
 });
 
+//Muestra por pantalla las respuestas del server a las interacciones
 client.on('data', (data) => {
     console.log('\nServer Answer: ', data.toString().trim());
     yesNoPromt();
 });
 
+//manejo de error en conexión
 client.on('error', (err) => {
     console.error(`\n❌  Connection error, couldn't connect to server: ${err.message}`)
 });
@@ -29,6 +33,7 @@ client.on('end', () => {
     process.exit();
 });
 
+//función en caso de querer agregar un libro, solicita más información paso a paso.
 function addBookPrompt(){
     rl.question("Please insert the book title: ", (bookTitle) => {
         
@@ -39,6 +44,7 @@ function addBookPrompt(){
     });
 }
 
+//Función para generar menú
 function promptUser() {
     console.log("\n****************************");
     console.log("  ✅ AVAILABLE COMMANDS:");
@@ -62,6 +68,7 @@ function promptUser() {
         if(input === 'ADD BOOK'){
             addBookPrompt()
         }else if(input === 'EXIT'){
+            //Manejo de la desconexión segura del server
             console.log('Disconnecting...');
             client.end();
         }else{
@@ -70,6 +77,7 @@ function promptUser() {
     });
 };
 
+//Permite volver a ejecutar comandos luego de que se resuelva el anterior
 function yesNoPromt() {
     rl.question('Would you like to continue? (Y/N) ', (answer) => {
         if (answer.toUpperCase() === 'Y') {
