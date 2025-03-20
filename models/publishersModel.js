@@ -1,9 +1,13 @@
+// Importamos los módulos fs, path y uuid que vamos a proceder a utilizar
 const fs = require('fs');
 const path = require('path');
 const { v4 : uuidv4 } = require('uuid');
 
+// Definimos la ruta para buscar los datos de editoriales en el documento JSON
 const publisherPath = path.join(__dirname, '../data/publishers.json');
 
+// Se procede a generar la función que permita leer las editoriales en el documento anteriormente definido por ruta y proceder a convertirlos a data JavaScript mediante el método parse
+// Se trabajó también con los errores en caso de que no se pueda leer la ruta definida 
 const readPublishers = () => {
     try{
         if(!fs.existsSync(publisherPath)){
@@ -17,6 +21,9 @@ const readPublishers = () => {
     }
 };
 
+// Generamos la función que nos permita ir agregando editoriales, ingresando los valores  nombre y ubicación
+// El id se generará por la utilización del método UUID
+// Se tuvo en cuenta el manejo de errores para el caso que no se haya podido guardar la nueva editorial ingresada 
 const addPublisher = ({publisherName, location}) => { 
     try{
         const publishers = readPublishers();
@@ -31,6 +38,8 @@ const addPublisher = ({publisherName, location}) => {
     }
 }; 
 
+// Procedemos a generar la función de búsqueda para encontrar editoriales utilizando los métodos de filter(), y toLowerCase()
+// Se trabajó con el manejo de errores para el caso que no se encuentre la editorial ingresada en la búsqueda
 const searchPublisher = (query) => {
     try{
         const publishers = readPublishers();
@@ -48,4 +57,5 @@ const searchPublisher = (query) => {
     } 
 };
 
+// Exportamos los módulos de las funciones que acabamos de crear para que podamos reutilizarlas
 module.exports = { readPublishers, addPublisher, searchPublisher }  

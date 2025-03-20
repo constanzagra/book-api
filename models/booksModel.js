@@ -1,10 +1,14 @@
+// Importamos los módulos fs, path y uuid que vamos a proceder a utilizar. Como así también las funciones generadas en authorsModel.js
 const fs = require('fs');
 const path = require('path');
 const {readAuthors, addAuthor} = require('./authorsModel');
 const { v4 : uuidv4 } = require('uuid');
 
+// Definimos la ruta para buscar los datos de libros en el documento JSON
 const booksPath = path.join(__dirname, '../data/books.json');
 
+// Se procede a generar la función que permita leer los libros en el documento anteriormente definido por ruta y proceder a convertirlos a data JavaScript mediante el método parse
+// Se trabajó también con los errores en caso de que no se pueda leer la ruta definida 
 const readBooks = () => {
     try{
         if(!fs.existsSync(booksPath)){
@@ -18,6 +22,9 @@ const readBooks = () => {
     }
 };
 
+// Generamos la función que nos permita ir agregando libros, ingresando los valores título y autor
+// El id se generará por la utilización del método UUID. Se asignará como valor del autor el UUID correspondiente al autor ingresado. De no existir, se previene la posibilidad de ingresar al nuevo autor
+// Se tuvo en cuenta el manejo de errores para el caso que no se haya podido guardar el nuevo libro ingresado  
 const addBook = ({newTitle, newBookAuthor}) => {
     try {
         const books = readBooks(); 
@@ -38,6 +45,10 @@ const addBook = ({newTitle, newBookAuthor}) => {
         throw err; 
     }
 }; 
+
+// Procedemos a generar la función de búsqueda para encontrar libros utilizando los métodos de filter(), y toLowerCase()
+// que nos permiten hacer la búsqueda por título
+// Se trabajó con el manejo de errores para el caso que no se encuentre el libro ingresado en la búsqueda
 const searchBookByTitle = (query) =>{
     try{
         const books = readBooks(); 
@@ -55,6 +66,8 @@ const searchBookByTitle = (query) =>{
     }
 }
 
+// Procedemos a generar la función de búsqueda para encontrar libros por autor utilizando los métodos filter(), find(), y toLowerCase()
+// Se trabajó con el manejo de errores para el caso que no se encuentre el autor ingresado en la búsqueda y también prevenimos la creación de objetos vacíos
 const searchBooksByAuthor = (query) =>{
     try{
         const books = readBooks();
@@ -76,4 +89,5 @@ const searchBooksByAuthor = (query) =>{
     }
 }
 
+// Exportamos los módulos de las funciones que acabamos de crear para que podamos reutilizarlas 
 module.exports = {readBooks, addBook, searchBookByTitle, searchBooksByAuthor}
