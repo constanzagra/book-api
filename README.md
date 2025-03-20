@@ -50,11 +50,11 @@ Recordá ejecutar primero el server y luego el cliente para no tener errores en 
 - El formato a utilizar es "SEARCH BOOK BY TITLE título"
 - Ejemplo: ``` SEARCH BOOK BY TITLE RAYUELA ```
 
-- **SEARCH AUTHOR**: Permite buscar un autor por nombre o nacionalidad.
+**SEARCH AUTHOR**: Permite buscar un autor por nombre o nacionalidad.
 - El formato a utilizar es "SEARCH AUTHOR nombre || nacionalidad" 
 - Ejemplo: ``` SEARCH AUTHOR Julio Cortazar  ```
 
-- **SEARCH PUBLISHER**: Permite buscar una editorial por nombre o ubicación.
+**SEARCH PUBLISHER**: Permite buscar una editorial por nombre o ubicación.
 - El formato a utilizar es "SEARCH PUBLISHER nombre || ubicación"
 - Ejemplo: ``` SEARCH PUBLISHER Argentina ```
 
