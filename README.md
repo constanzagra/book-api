@@ -46,9 +46,18 @@ Recordá ejecutar primero el server y luego el cliente para no tener errores en 
 - El formato a utilizar es "ADD PUBLISHER nombre país"
 - Ejemplo: ```ADD PUBLISHER Santillana Argentina```
 
-**SEARCH BOOK BY TITLE**: Permite buscar un libro por título
+**SEARCH BOOK BY TITLE**: Permite buscar un libro por título.
 - El formato a utilizar es "SEARCH BOOK BY TITLE título"
 - Ejemplo: ``` SEARCH BOOK BY TITLE RAYUELA ```
+
+- **SEARCH AUTHOR**: Permite buscar un autor por nombre o nacionalidad.
+- El formato a utilizar es "SEARCH AUTHOR nombre || nacionalidad" 
+- Ejemplo: ``` SEARCH AUTHOR Julio Cortazar  ```
+
+- **SEARCH PUBLISHER**: Permite buscar una editorial por nombre o ubicación.
+- El formato a utilizar es "SEARCH PUBLISHER nombre || ubicación"
+- Ejemplo: ``` SEARCH PUBLISHER Argentina ```
+
 
 **DEMO**
 ![image](https://github.com/user-attachments/assets/7eb4cab2-974b-45d7-a8b7-882b6db9fc08)
