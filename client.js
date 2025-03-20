@@ -52,6 +52,7 @@ function promptUser() {
     console.log("  ✍️  GET BOOKS            → Get books list");
     console.log("  ➕ ADD BOOK             → Add a book (title, author)");
     console.log("  ✔️  SEARCH BOOK BY TITLE → Search a book by title");
+    console.log("  ✔️  SEARCH BOOK BY AUTHOR → Search book(s) by author");
     console.log("  ❌ EXIT to finish");
     console.log("*******************************");
 

@@ -30,6 +30,18 @@ const booksController = {
         } catch(err){
             return responseView.formatError("⚠️  Error finding that book", err.message);
         }
+    },
+
+    searchBooksByAuthor: (data)=>{
+        try{
+            const result = bookModel.searchBooksByAuthor(data);
+            if(!result){
+                return responseView.formatError("⚠️  No book was found for that author");
+            }
+            return responseView.responseFormatter(result);
+        } catch(err){
+            return responseView.formatError("⚠️  Error finding a book with that author", err.message);
+        }
     }
 }
 

@@ -55,5 +55,25 @@ const searchBookByTitle = (query) =>{
     }
 }
 
-//TODO: SEARCH BOOK BY AUTHOR
-module.exports = {readBooks, addBook, searchBookByTitle}
+const searchBooksByAuthor = (query) =>{
+    try{
+        const books = readBooks();
+        const authors = readAuthors();
+        const requestedAuthor = authors.find(author =>
+            author.name.toLowerCase().includes(query.toLowerCase())
+        );
+        const result = books.filter(book => 
+            book.author === requestedAuthor.id
+        );
+        if (!requestedAuthor) {
+            throw new Error("⚠️  No author found with that name.");
+        }
+        return result
+    }
+    catch(err){
+        console.error("⚠️  Error searching that author:", err.message);
+        throw err;
+    }
+}
+
+module.exports = {readBooks, addBook, searchBookByTitle, searchBooksByAuthor}

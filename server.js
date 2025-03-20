@@ -79,7 +79,7 @@ const server = net.createServer((socket) => {
                     const name = data.slice(1, data.length -1).join(' ');
                     const author = data.slice(2).join(' ');
                     if (!name || !author) {
-                        socket.write('Error: Title and author cannot be empty.\n');
+                        socket.write('Error: Title and nationality cannot be empty.\n');
                         return;
                     }
                     const newBook = booksController.addBook({titulo: name, autor: author});
@@ -98,7 +98,13 @@ const server = net.createServer((socket) => {
                         socket.write(`Book found: ${response}`)
                         //SEARCH BOOK BY TITLE FUNCIONA ✅
                         
-                    }
+                    }else if(args[2] === 'AUTHOR'){
+                            const author = args.slice(3).join(' ');
+                            response = booksController.searchBooksByAuthor(author);
+                            socket.write(`Book(s) found: ${response}`)
+                            //SEARCH BOOK BY AUTHOR NO FUNCIONA X
+                            
+                    } 
                 }
                 if(args[0] === 'AUTHOR'){
                     const nameOrNationality = args.slice(1, data.length -1).join(' ');
