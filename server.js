@@ -32,7 +32,7 @@ const server = net.createServer((socket) => {
 
         const message = data.toString().trim();
         const [command, ...args] = message.split(' ');
-
+        
         switch (command) {
             case 'GET':
                 if (args[0] === 'AUTHORS') {
@@ -57,12 +57,20 @@ const server = net.createServer((socket) => {
                 if (args[0] === 'AUTHOR') {
                     const origin = args.slice(args.length - 1).join(' ');
                     const name = args.slice(1, args.length - 1).join(' ');
+                    if (!name || !origin) {
+                        socket.write('Error: Name and nationality cannot be empty.\n');
+                        return;
+                    }
                     const newAuthor = authorsController.addAuthor({name: name, nationality: origin});
                     socket.write(`Added Author: ${newAuthor}`);
                         //ADD AUTHOR FUNCIONA
                 } else if (args[0] === 'PUBLISHER') {
                     const name = args.slice(1, args.length -1).join(' ');
                     const located = args.slice(args.length - 1).join(' ');
+                    if (!name || !located) {
+                        socket.write('Error: Publisher and location cannot be empty.\n');
+                        return;
+                    }
                     const newPublisher = publishersController.addPublisher({publisherName: name, location: located});
                     socket.write(`Publisher added: ${newPublisher}`); 
                         //ADD PUBLISHER FUNCIONA
@@ -70,6 +78,10 @@ const server = net.createServer((socket) => {
                     const data = message.split("+");
                     const name = data.slice(1, data.length -1).join(' ');
                     const author = data.slice(2).join(' ');
+                    if (!name || !author) {
+                        socket.write('Error: Title and author cannot be empty.\n');
+                        return;
+                    }
                     const newBook = booksController.addBook({titulo: name, autor: author});
                     socket.write(`Book added: ${newBook}`);
                     //ADD BOOK FUNCIONA ✅                 
